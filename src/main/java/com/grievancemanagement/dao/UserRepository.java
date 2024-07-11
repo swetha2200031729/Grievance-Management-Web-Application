@@ -2,17 +2,15 @@ package com.grievancemanagement.dao;
 
 import javax.ejb.Stateless;
 
-import com.grievancemanagement.entity.TodoItem;
+import com.grievancemanagement.entity.User;
 
 @Stateless
-public class TodoItemRepository extends BaseRepository<TodoItem> {
+public class UserRepository extends BaseRepository<User>{
 
 	@Override
 	protected String getEntityName() {
 		// TODO Auto-generated method stub
-		return "TodoItem";
+		return "User";
 	}
-     
-	
 	
 }

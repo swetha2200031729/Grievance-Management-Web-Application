@@ -25,6 +25,6 @@ public class TodoItemUI {
     public void save() {
     	TodoItem todoItem = new TodoItem();
     	todoItem.setTask(text);
-    	todoItemRepository.insert(todoItem);
+    	todoItemRepository.save(todoItem);
     }
 }
