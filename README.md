@@ -1,9 +1,12 @@
 # Grievance Management
 
 ## Problem Statement
-A project on Grievance Management System in Corporates like for example Coffee Day to know on how to manage employee issues. The appication should provide the possibilities of Grievsnce Survey entry, Audit of Grievances, Board of Directors' Oversight and Reponse to the Grievances
+A project on Grievance Management Systems in corporations like Coffee Day to know how to manage employee issues. The application should provide the possibilities of Grievance Survey entry, Audit of Grievances, Board of Directors Oversight, and responses to the Grievances
 
 ## Requirements
-- ABCD
-- EFGH
-- IJKL
+- Employees should be able to file their grievances
+- Employees should be able to view the status of their grievance
+- Board of Directors should be able to view the Grievances
+- Board of Directors should be able to reply to the Grievances
+- Admin should be able to manage the data
+  
