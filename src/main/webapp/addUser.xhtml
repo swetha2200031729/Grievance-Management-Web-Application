@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+        <script src="https://cdn.tailwindcss.com"></script>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid columns="2" styleClass="grid grid-cols-2 gap-4">
+                <h:outputLabel for="firstName" value="Enter First Name:" />
+                <h:inputText id="firstName" value="#{addUserUI.firstName}" class="input input-bordered input-primary w-full max-w-xs"/><br/><br/>
+                
+                <h:outputLabel for="lastName" value="Enter Last Name:" />
+                <h:inputText id="lastName" value="#{addUserUI.lastName}" class="input input-bordered input-primary w-full max-w-xs"/><br/><br/>
+                
+                <h:outputLabel for="email" value="Enter Email:" />
+                <h:inputText id="email" value="#{addUserUI.email}" class="input input-bordered input-primary w-full max-w-xs"/><br/><br/>
+                
+                <h:outputLabel for="contactNumber" value="Enter Contact Number:" />
+                <h:inputText id="contactNumber" value="#{addUserUI.contactNumber}" class="input input-bordered input-primary w-full max-w-xs"/><br/><br/>
+                
+                <h:outputLabel for="username" value="Enter Username:" />
+                <h:inputText id="username" value="#{addUserUI.username}" class="input input-bordered input-primary w-full max-w-xs"/><br/><br/>
+                
+                <h:outputLabel for="password" value="Enter Password:" />
+                <h:inputSecret id="password" value="#{addUserUI.password}" class="input input-bordered input-primary w-full max-w-xs"/><br/><br/>
+                
+                <h:outputLabel for="department" value="Select Department:" />
+                <h:selectOneMenu id="department" value="#{addUserUI.departmentId}" class="input input-bordered input-primary w-full max-w-xs">
+                    <f:selectItems value="#{addUserUI.departments}" var="department" itemValue="#{department.id}" itemLabel="#{department.name}" />
+                </h:selectOneMenu><br/><br/>
+                
+                <h:outputLabel for="designation" value="Select Designation:" />
+                <h:selectOneMenu id="designation" value="#{addUserUI.designationId}" class="input input-bordered input-primary w-full max-w-xs">
+                    <f:selectItems value="#{addUserUI.designations}" var="designation" itemValue="#{designation.id}" itemLabel="#{designation.name}" />
+                </h:selectOneMenu><br/><br/>
+            </h:panelGrid>
+            <h:commandButton class="btn btn-accent" action="#{addUserUI.save()}" value="Add User" />
+        </h:form>
+    </h:body>
+</html>
