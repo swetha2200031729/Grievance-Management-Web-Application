@@ -10,6 +10,8 @@
   <class>com.grievancemanagement.entity.TodoItem</class>
   <class>com.grievancemanagement.entity.Designation</class>
   <class>com.grievancemanagement.entity.Department</class>
+  <class>com.grievancemanagement.entity.Grievance</class>
+  <class>com.grievancemanagement.entity.Category</class>
   <properties>
    <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
    <property name="hibernate.hbm2ddl.auto" value="update" />

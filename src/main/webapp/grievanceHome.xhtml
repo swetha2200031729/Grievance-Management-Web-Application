@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<h:body>
+	<h:form>
+		 <h:dataTable value="#{grievanceHomeUI.grievances}" var="grievance">
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                <h:outputText value="#{grievance.id}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Issue</f:facet>
+                <h:outputText value="#{grievance.issue}" />
+            </h:column>
+           <h:column>
+                <f:facet name="header">Department of Issue </f:facet>
+                <h:outputText value="#{grievance.department.name}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Category of Issue </f:facet>
+                <h:outputText value="#{grievance.category.name}" />
+            </h:column>
+           
+             <h:column>
+                <f:facet name="header">Delete</f:facet>
+                <h:commandButton action="#{grievanceHomeUI.delete(grievance.id)}" value="Delete" />
+            </h:column>
+        </h:dataTable>
+        	<h:commandLink class="link link-secondary" action="addGrievance" value="Add Grievance" />
+        
+	</h:form>
+	</h:body>
+</html>

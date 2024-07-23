@@ -29,7 +29,7 @@ public class AddUserUI {
 	
 	@Getter
 	@Setter
-	private LocalDate dateOfBirth;
+	private String dateOfBirth;
 	
 	@Getter
 	@Setter
@@ -79,7 +79,7 @@ public class AddUserUI {
 		User user = new User();
 		user.setFirstName(firstName);
 		user.setLastName(lastName);
-		user.setDateOfBirth(null);
+		user.setDateOfBirth(LocalDate.parse(dateOfBirth));
 		user.setEmail(email);
 		user.setContactNumber(contactNumber);
 		user.setUsername(username);

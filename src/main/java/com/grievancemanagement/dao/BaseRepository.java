@@ -1,7 +1,6 @@
 package com.grievancemanagement.dao;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -12,7 +11,7 @@ import javax.persistence.Query;
 public abstract class BaseRepository<T> {
 	
 	@PersistenceContext(unitName = "grievanceManagement")
-	private EntityManager entityManager;
+	protected EntityManager entityManager;
     
 	protected abstract String getEntityName();
 	

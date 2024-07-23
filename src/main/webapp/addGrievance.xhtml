@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+    <title>Add Grievance</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</h:head>
+
+<h:body>
+    <h:form>
+        <div class="container mx-auto p-6">
+            <h1 class="text-2xl font-bold mb-4">Add Grievance</h1>
+            
+            <!-- Grievance Issue Input -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="issue">
+                    Issue
+                </label>
+                <h:inputTextarea id="issue" 
+                                 value="#{addGrievanceUI.issue}" 
+                                 class="textarea textarea-bordered w-full max-w-xs" 
+                                 placeholder="Describe your grievance"
+                                 rows="4" />
+            </div>
+
+            <!-- Department Selection -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="department">
+                    Department
+                </label>
+                <h:selectOneMenu id="department" 
+                                 value="#{addGrievanceUI.departmentId}" 
+                                 class="select select-bordered w-full max-w-xs">
+                    <f:selectItem itemValue="" itemLabel="Select a Department" />
+                    <f:selectItems value="#{addGrievanceUI.departments}" var="department"
+                                   itemValue="#{department.id}" itemLabel="#{department.name}" />
+                </h:selectOneMenu>
+            </div>
+            
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="department">
+                    Category
+                </label>
+                <h:selectOneMenu id="category" 
+                                 value="#{addGrievanceUI.categoryId}" 
+                                 class="select select-bordered w-full max-w-xs">
+                    <f:selectItem itemValue="" itemLabel="Select Category of your grievance" />
+                    <f:selectItems value="#{addGrievanceUI.categories}" var="category"
+                                   itemValue="#{category.id}" itemLabel="#{category.name}" />
+                </h:selectOneMenu>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="mb-4">
+                <h:commandButton value="Submit Grievance" 
+                                 action="#{addGrievanceUI.addGrievance()}" 
+                                 class="btn btn-primary" />
+            </div>
+        </div>
+    </h:form>
+</h:body>
+</html>

@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich">
     <h:head>
         <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
         <script src="https://cdn.tailwindcss.com"></script>
@@ -10,11 +11,18 @@
     <h:body>
         <h:form>
             <h:panelGrid columns="2" styleClass="grid grid-cols-2 gap-4">
-                <h:outputLabel for="firstName" value="Enter First Name:" />
+                <h:outputLabel for="firstName" value="Enter First Name:"/>
                 <h:inputText id="firstName" value="#{addUserUI.firstName}" class="input input-bordered input-primary w-full max-w-xs"/><br/><br/>
                 
-                <h:outputLabel for="lastName" value="Enter Last Name:" />
+                <h:outputLabel for="lastName" value="Enter Last Name:"/>
                 <h:inputText id="lastName" value="#{addUserUI.lastName}" class="input input-bordered input-primary w-full max-w-xs"/><br/><br/>
+                
+                <h:outputLabel for="dateOfBirth" value="Enter Date of Birth:"/>
+				<h:inputText id="dateOfBirth" value="#{addUserUI.dateOfBirth}" 
+                     class="input input-bordered input-primary w-full max-w-xs">
+		            <f:validateRegex pattern="\d{4}-\d{2}-\d{2}" />
+		        </h:inputText>
+		        <h:message for="dateOfBirth" style="color: red;" />
                 
                 <h:outputLabel for="email" value="Enter Email:" />
                 <h:inputText id="email" value="#{addUserUI.email}" class="input input-bordered input-primary w-full max-w-xs"/><br/><br/>

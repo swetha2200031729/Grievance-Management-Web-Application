@@ -1,6 +1,5 @@
 package com.grievancemanagement.entity;
 
-
 import java.util.List;
 
 import javax.persistence.Column;
@@ -13,21 +12,18 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Getter
 @Setter
-public class Department {
+@Getter
+public class Category {
 	
 	@Id
 	@GeneratedValue
 	private long id;
+
+	@Column(unique = true)
+	private String name;	
 	
-	@Column(unique=true)
-	private String name;
-	
-	@OneToMany(mappedBy = "department")
-	private List<User> users;
-	
-	@OneToMany(mappedBy = "department")
+	@OneToMany(mappedBy = "category")
 	private List<Grievance> grievances;
 	
 }
