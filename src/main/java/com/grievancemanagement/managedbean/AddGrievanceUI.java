@@ -52,7 +52,8 @@ public class AddGrievanceUI {
 	public List<Category> getCategories(){
 		return categoryRepository.findAll();
 	}
-	public void addGrievance() {
+	
+	public String addGrievance() {
 		Department department = departmentRepository.findById(departmentId);
 		Category category = categoryRepository.findById(categoryId);
 		Grievance grievance = new Grievance();
@@ -61,6 +62,7 @@ public class AddGrievanceUI {
 		grievance.setUser(authenticationBean.getUser());
 		grievance.setCategory(category);
 		grievanceRepository.save(grievance);
+		return "userGrievances.jsf?faces-redirect=true";
 	}
 	
 }

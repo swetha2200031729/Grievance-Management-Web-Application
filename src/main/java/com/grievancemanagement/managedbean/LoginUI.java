@@ -30,9 +30,10 @@ public class LoginUI {
         authenticationBean.authenticate(cleanUsername, password);
         
         if (authenticationBean.isLoggedIn()) {
-            return "designationHome?faces-redirect=true";
+            return "index.jsf?faces-redirect=true";
         } else {
             return null; // stay on the same page or handle error as needed
         }
+          
     }
 }

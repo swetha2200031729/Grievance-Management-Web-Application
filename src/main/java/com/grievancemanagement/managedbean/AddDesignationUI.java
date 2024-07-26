@@ -19,10 +19,12 @@ public class AddDesignationUI {
 	@EJB
 	private DesignationRepository designationRepository;
 	
-	public void addDesignation() {
+	public String addDesignation() {
 		Designation designation = new Designation();
 		designation.setName(designationName);
 		designationRepository.save(designation);
+		return "adminDesignation.jsf?faces-redirect=true";
+		
 	}
 	
 }

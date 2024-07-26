@@ -1,9 +1,11 @@
 package com.grievancemanagement.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -24,6 +26,6 @@ public class Category {
 	private String name;	
 	
 	@OneToMany(mappedBy = "category")
-	private List<Grievance> grievances;
+	private List<Grievance> grievances = new ArrayList<>();
 	
 }

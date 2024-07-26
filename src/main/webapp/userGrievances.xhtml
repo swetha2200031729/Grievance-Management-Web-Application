@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: auto;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <h:form>
+        <h:dataTable value="#{viewUserGrievancesUI.userGrievances}" var="grievance" styleClass="grievance-table">
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                <h:outputText value="#{grievance.id}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Issue</f:facet>
+                <h:outputText value="#{grievance.issue}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Department of Issue</f:facet>
+                <h:outputText value="#{grievance.department.name}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Category of Issue</f:facet>
+                <h:outputText value="#{grievance.category.name}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Created At</f:facet>
+                <h:outputText value="#{grievance.createdAt}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Reply</f:facet>
+                <ui:fragment rendered="#{grievance.grievanceReply == null}"> 
+                	<i>Awaiting response...</i>
+                </ui:fragment>
+                <ui:fragment rendered="#{grievance.grievanceReply != null}"> 
+                	<h:outputText value="#{grievance.grievanceReply.reply}" />
+                </ui:fragment>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Replied By</f:facet>
+                <ui:fragment rendered="#{grievance.grievanceReply == null}"> 
+                	<i>Awaiting response...</i>
+                </ui:fragment>
+                <ui:fragment rendered="#{grievance.grievanceReply != null}"> 
+                	<h:outputText value="#{grievance.grievanceReply.repliedBy.username}" />
+                </ui:fragment>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Replied At</f:facet>
+                <ui:fragment rendered="#{grievance.grievanceReply == null}"> 
+                	<i>Awaiting response...</i>
+                </ui:fragment>
+                <ui:fragment rendered="#{grievance.grievanceReply != null}"> 
+                	<h:outputText value="#{grievance.grievanceReply.repliedAt}" />
+                </ui:fragment>
+            </h:column>
+        </h:dataTable>
+        <h:commandLink class="link link-secondary" action="addGrievance" value="Add Grievance" /><br/>
+    </h:form>
+</h:body>
+</html>

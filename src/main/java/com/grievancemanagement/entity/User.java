@@ -1,12 +1,15 @@
 package com.grievancemanagement.entity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -42,6 +45,12 @@ public class User {
 	private Designation designation;
 	
 	@OneToMany(mappedBy = "user")
-	private List<Grievance> grievances;
+	private List<Grievance> grievances = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "repliedBy")
+	private List<GrievanceReply> grievanceReplies = new ArrayList<>();
+	
+	@ManyToMany(mappedBy = "users",fetch = FetchType.EAGER)
+	private List<Permission> permissions = new ArrayList<>();
 	
 }

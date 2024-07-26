@@ -19,11 +19,13 @@ public class AddCategoryUI {
 	@EJB
 	private CategoryRepository categoryRepository;
 	
-	public void addCategory() {
+	public String addCategory() {
 		
 		Category category = new Category();
 		category.setName(categoryName);
 		categoryRepository.save(category);
+		
+		return "categoryHome.jsf?faces-redirect=true";
 		
 	}
 	

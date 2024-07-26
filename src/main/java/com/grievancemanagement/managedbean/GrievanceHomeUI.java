@@ -20,5 +20,5 @@ public class GrievanceHomeUI {
 	public void delete(long id) {
 	   grievanceRepository.deleteById(id);
 	}
-
+	
 }

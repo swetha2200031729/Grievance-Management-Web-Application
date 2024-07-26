@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template ="/bodTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:define name="head">
+    <style>
+        table {
+            border-collapse: collapse;
+            width: auto;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</ui:define>
+
+<ui:define name="content">
+    <h:form>
+        <h:dataTable value="#{bodPanelUI.pendingGrievances}" var="grievance" styleClass="grievance-table">
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                <h:outputText value="#{grievance.id}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Issue</f:facet>
+                <h:outputText value="#{grievance.issue}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Department of Issue</f:facet>
+                <h:outputText value="#{grievance.department.name}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Category of Issue</f:facet>
+                <h:outputText value="#{grievance.category.name}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Created At</f:facet>
+                <h:outputText value="#{grievance.createdAt}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Created By</f:facet>
+                <h:outputText value="#{grievance.user.username}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Reply</f:facet>
+                <h:commandLink action="grievanceReply" value="Reply to the Issue">
+                	<f:param name="id" value="#{grievance.id}"></f:param>
+                </h:commandLink>
+            </h:column>
+            
+        </h:dataTable>
+        <br/><br/>
+        
+        <h:dataTable value="#{bodPanelUI.solvedGrievances}" var="grievance" styleClass="grievance-table">
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                <h:outputText value="#{grievance.id}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Issue</f:facet>
+                <h:outputText value="#{grievance.issue}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Department of Issue</f:facet>
+                <h:outputText value="#{grievance.department.name}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Category of Issue</f:facet>
+                <h:outputText value="#{grievance.category.name}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Created At</f:facet>
+                <h:outputText value="#{grievance.createdAt}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Created By</f:facet>
+                <h:outputText value="#{grievance.user.username}" />
+            </h:column>
+        </h:dataTable>
+      
+    </h:form>
+</ui:define>
+</ui:composition>

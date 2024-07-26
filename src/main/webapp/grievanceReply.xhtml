@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template = "/template.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<ui:define name="head">
+     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+     <script src="https://cdn.tailwindcss.com"></script>
+     
+      </ui:define>
+<ui:define name="content">
+
+	<h:outputText value="Grievance Reply: ##{grievanceReplyBean.grievanceId}" />
+	<hr />
+	<h:form>
+	
+	<table border="1">
+		<tr><td><b>Issue:</b></td> <td><h:outputText value="#{grievanceReplyBean.grievance.issue}" /></td></tr>
+		<tr><td><b>Created At:</b></td> <td><h:outputText value="#{grievanceReplyBean.grievance.createdAt}" /></td></tr>
+		<tr><td><b>Created By:</b></td> <td><h:outputText value="#{grievanceReplyBean.grievance.user.username}" /></td></tr>
+		<tr><td><b>Category:</b></td> <td><h:outputText value="#{grievanceReplyBean.grievance.category.name}" /></td></tr>
+		<tr><td><b>Concerned Department:</b></td> <td><h:outputText value="#{grievanceReplyBean.grievance.department.name}" /></td></tr>
+		<ui:fragment rendered="#{grievanceReplyBean.replied}">
+			<tr>
+				<td>
+				<b>Reply:</b>
+				</td>
+				<td>
+				<h:outputText value="#{grievanceReplyBean.grievance.grievanceReply.reply}" /><br />
+				</td>
+			</tr>
+			<tr>
+				<td>
+				<b>Replied At:</b>
+				</td>
+				<td>
+				<h:outputText value="#{grievanceReplyBean.grievance.grievanceReply.repliedAt}" /><br />
+				</td>
+			</tr>
+			<tr>
+				<td>
+				<b>Replied By:</b>
+				</td>
+				<td>
+				<h:outputText value="#{grievanceReplyBean.grievance.grievanceReply.repliedBy.username}" /><br />
+				</td>
+			</tr>
+		</ui:fragment>
+		<ui:fragment rendered="#{not grievanceReplyBean.replied}">
+			<tr>
+				<td>
+				<b>Reply:</b>
+				</td>
+				<td>
+				<h:inputTextarea value="#{grievanceReplyBean.replyText}" /><br />
+				</td>
+			</tr>
+			<tr><td><h:commandButton action="#{grievanceReplyBean.saveReply()}" value="Send Reply" /></td></tr>
+		</ui:fragment>
+	</table>
+	</h:form>
+
+</ui:define>
+</ui:composition>

@@ -23,7 +23,7 @@ public abstract class BaseRepository<T> {
 		Query query = entityManager.createQuery("from " + getEntityName());
 		System.out.println(query);
 		return query.getResultList();
-	}
+	} 
 	
 	public void delete(T obj) {
 		entityManager.remove(obj);
@@ -42,7 +42,5 @@ public abstract class BaseRepository<T> {
 	public void update(T obj) {
 		entityManager.merge(obj);
 	}
-	
-	
 	
 }

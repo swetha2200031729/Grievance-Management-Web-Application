@@ -72,7 +72,7 @@ public class AddUserUI {
 		return departmentRepository.findAll();
 	}
 	
-	public void save() {
+	public String save() {
 		
 		Department department = departmentRepository.findById(departmentId);
 		Designation designation = designationRepository.findById(designationId);
@@ -87,6 +87,7 @@ public class AddUserUI {
 		user.setDepartment(department);
 		user.setDesignation(designation);
 		userRepository.save(user);
+		return "userHome.jsf?faces-redirect=true";
 		
 	}
 	

@@ -12,6 +12,8 @@
   <class>com.grievancemanagement.entity.Department</class>
   <class>com.grievancemanagement.entity.Grievance</class>
   <class>com.grievancemanagement.entity.Category</class>
+  <class>com.grievancemanagement.entity.GrievanceReply</class>
+  <class>com.grievancemanagement.entity.Permission</class>
   <properties>
    <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
    <property name="hibernate.hbm2ddl.auto" value="update" />

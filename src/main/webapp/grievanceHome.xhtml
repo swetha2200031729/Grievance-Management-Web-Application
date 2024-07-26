@@ -4,9 +4,25 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html">
 
-	<h:body>
-	<h:form>
-		 <h:dataTable value="#{grievanceHomeUI.grievances}" var="grievance">
+<h:head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: auto;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <h:form>
+        <h:dataTable value="#{grievanceHomeUI.grievances}" var="grievance" styleClass="grievance-table">
             <h:column>
                 <f:facet name="header">ID</f:facet>
                 <h:outputText value="#{grievance.id}" />
@@ -15,22 +31,29 @@
                 <f:facet name="header">Issue</f:facet>
                 <h:outputText value="#{grievance.issue}" />
             </h:column>
-           <h:column>
-                <f:facet name="header">Department of Issue </f:facet>
+            <h:column>
+                <f:facet name="header">Department of Issue</f:facet>
                 <h:outputText value="#{grievance.department.name}" />
             </h:column>
             <h:column>
-                <f:facet name="header">Category of Issue </f:facet>
+                <f:facet name="header">Category of Issue</f:facet>
                 <h:outputText value="#{grievance.category.name}" />
             </h:column>
-           
-             <h:column>
+            <h:column>
+                <f:facet name="header">Created At</f:facet>
+                <h:outputText value="#{grievance.createdAt}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Created By</f:facet>
+                <h:outputText value="#{grievance.user.username}" />
+            </h:column>
+            <h:column>
                 <f:facet name="header">Delete</f:facet>
                 <h:commandButton action="#{grievanceHomeUI.delete(grievance.id)}" value="Delete" />
             </h:column>
         </h:dataTable>
-        	<h:commandLink class="link link-secondary" action="addGrievance" value="Add Grievance" />
-        
-	</h:form>
-	</h:body>
+        <h:commandLink class="link link-secondary" action="addGrievance" value="Add Grievance" /><br/>
+        <h:commandButton styleClass="link link-secondary" value="Export to CSV" action="#{grievanceExport.download()}" />  
+    </h:form>
+</h:body>
 </html>

@@ -18,9 +18,10 @@ public class AddDepartmentUI {
 	@EJB
 	private DepartmentRepository departmentRepository;
 	
-	public void addDepartment() {
+	public String addDepartment() {
 		Department department = new Department();
 		department.setName(departmentName);
 		departmentRepository.save(department);
+		return "departmentHome.jsf?faces-redirect=true";
 	}
 }
