@@ -7,11 +7,43 @@
 	<ui:define name="head">
 <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
 <script src="https://cdn.tailwindcss.com"></script>
-
+<style>
+            table {
+                border-collapse: collapse;
+                width: auto;
+                margin: auto;
+            }
+            table, th, td {
+                border: 1px solid black;
+            }
+            th, td {
+                padding: 8px;
+                text-align: left;
+            }
+            .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center; 
+                justify-content: center; 
+                height: 100vh; 
+            }
+            .table-container {
+                margin-bottom: 20px; 
+                margin-left: 15rem;
+            }
+            .link-container {
+                display: flex;
+                justify-content: center; 
+                margin-left: 15rem;
+                gap: 9rem;
+            }
+        </style>
 </ui:define>
 	<ui:define name="content">
 	
 	<h:form>
+	<div class="container">
+                <div class="table-container">
 		 <h:dataTable value="#{departmentHomeUI.departments}" var="department">
             <h:column>
                 <f:facet name="header">ID</f:facet>
@@ -26,8 +58,12 @@
                 <h:commandButton action="#{departmentHomeUI.delete(department.id)}" value="Delete" />
             </h:column>
         </h:dataTable>
+        </div>
+        <div class="link-container">
         	<h:commandLink styleClass="link link-secondary" action="addDepartment" value="Add Department" /> <br/>
         	<h:commandButton styleClass="link link-secondary" value="Export to CSV" action="#{departmentExport.download()}" />
+	</div>
+	</div>
 	</h:form>
 	</ui:define>
 </ui:composition>

@@ -1,32 +1,68 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition template ="/adminTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition template="/adminTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html">
 
-	<ui:define name="head">
-<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
-<script src="https://cdn.tailwindcss.com"></script>
+    <ui:define name="head">
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+            table {
+                border-collapse: collapse;
+                width: auto;
+                margin: auto;
+            }
+            table, th, td {
+                border: 1px solid black;
+            }
+            th, td {
+                padding: 8px;
+                text-align: left;
+            }
+            .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center; 
+                justify-content: center; 
+                height: 100vh; 
+            }
+            .table-container {
+                margin-bottom: 20px; 
+                margin-left: 15rem;
+            }
+            .link-container {
+                display: flex;
+                justify-content: center; 
+                margin-left: 15rem;
+            }
+        </style>
+    </ui:define>
 
-</ui:define>
-	<ui:define name ="content">
-	<h:form>
-		 <h:dataTable value="#{categoryHomeUI.categories}" var="category">
-            <h:column>
-                <f:facet name="header">ID</f:facet>
-                <h:outputText value="#{category.id}" />
-            </h:column>
-            <h:column>
-                <f:facet name="header">Name</f:facet>
-                <h:outputText value="#{category.name}" />
-            </h:column>
-             <h:column>
-                <f:facet name="header">Delete</f:facet>
-                <h:commandButton action="#{categoryHomeUI.delete(category.id)}" value="Delete" />
-            </h:column>
-        </h:dataTable>
-        	<h:commandLink class="link link-secondary" action="addCategory" value="Add Category" />
-        
-	</h:form>
-	</ui:define> 
+    <ui:define name="content">
+        <h:form>
+            <div class="container">
+                <div class="table-container">
+                    <h:dataTable value="#{categoryHomeUI.categories}" var="category">
+                        <h:column>
+                            <f:facet name="header">ID</f:facet>
+                            <h:outputText value="#{category.id}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Name</f:facet>
+                            <h:outputText value="#{category.name}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Delete</f:facet>
+                            <h:commandButton action="#{categoryHomeUI.delete(category.id)}" value="Delete" />
+                        </h:column>
+                    </h:dataTable>
+                </div>
+                <div class="link-container">
+                    <h:commandLink class="link link-secondary" action="addCategory" value="Add Category" />
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+
 </ui:composition>

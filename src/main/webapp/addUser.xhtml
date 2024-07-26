@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition template="/adminTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition template="/template.xhtml" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
@@ -7,46 +7,120 @@
     <ui:define name="head">
         <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
         <script src="https://cdn.tailwindcss.com"></script>
+         <style>
+            .form-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                width: 100%;
+            }
+            .form-row {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                max-width: 800px;
+                margin-bottom: 1rem;
+            }
+            .form-row > * {
+                flex: 1;
+                margin-left: 0.5rem;
+                margin-right: 0.5rem;
+            }
+            .form-row > *:first-child {
+                margin-left: 7rem;
+            }
+            .form-row > *:last-child {
+                margin-right: 7rem;
+            }
+             .btn-container {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                max-width: 800px;
+            }
+            .btn-container .btn {
+                margin-top: 0.5rem;
+            }
+            .custom-button {
+                background-color: #484744; 
+                color: white;
+                border: none;
+                padding: 10px 260px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                cursor: pointer;
+                border-radius: 4px;
+                 transition: background-color 0.5s;
+                 }
+            .custom-button:hover {
+                background-color: #B2B2B6; 
+            }
+        </style>
+        
     </ui:define>
     <ui:define name="content">
         <h:form>
-            <h:panelGrid columns="2" styleClass="grid grid-cols-2 gap-4">
-                <h:outputLabel for="firstName" value="Enter First Name:"/>
-                <h:inputText id="firstName" value="#{addUserUI.firstName}" class="input input-bordered input-primary w-full max-w-xs"/><br/><br/>
+             <div class="form-container">
+                <div class="form-row">
+                    <h:outputLabel for="firstName" value="Enter First Name :"/>
+                    <h:inputText id="firstName" value="#{addUserUI.firstName}" class="input input-bordered input-primary w-full max-w-xs"/>
+                </div>
                 
-                <h:outputLabel for="lastName" value="Enter Last Name:"/>
-                <h:inputText id="lastName" value="#{addUserUI.lastName}" class="input input-bordered input-primary w-full max-w-xs"/><br/><br/>
+                <div class="form-row">
+                    <h:outputLabel for="lastName" value="Enter Last Name :"/>
+                    <h:inputText id="lastName" value="#{addUserUI.lastName}" class="input input-bordered input-primary w-full max-w-xs"/>
+                </div>
                 
-                <h:outputLabel for="dateOfBirth" value="Enter Date of Birth:"/>
-				<h:inputText id="dateOfBirth" value="#{addUserUI.dateOfBirth}" 
-                     class="input input-bordered input-primary w-full max-w-xs">
-		            <f:validateRegex pattern="\d{4}-\d{2}-\d{2}" />
-		        </h:inputText>
-		        <h:message for="dateOfBirth" style="color: red;" />
+                <div class="form-row">
+                    <h:outputLabel for="dateOfBirth" value="Enter Date of Birth :"/>
+                    <h:inputText id="dateOfBirth" value="#{addUserUI.dateOfBirth}" class="input input-bordered input-primary w-full max-w-xs">
+                        <f:validateRegex pattern="\d{4}-\d{2}-\d{2}" />
+                    </h:inputText>
+                    <h:message for="dateOfBirth" style="color: red;" />
+                </div>
                 
-                <h:outputLabel for="email" value="Enter Email:" />
-                <h:inputText id="email" value="#{addUserUI.email}" class="input input-bordered input-primary w-full max-w-xs"/><br/><br/>
+                <div class="form-row">
+                    <h:outputLabel for="email" value="Enter Email :" />
+                    <h:inputText id="email" value="#{addUserUI.email}" class="input input-bordered input-primary w-full max-w-xs"/>
+                </div>
                 
-                <h:outputLabel for="contactNumber" value="Enter Contact Number:" />
-                <h:inputText id="contactNumber" value="#{addUserUI.contactNumber}" class="input input-bordered input-primary w-full max-w-xs"/><br/><br/>
+                <div class="form-row">
+                    <h:outputLabel for="contactNumber" value="Enter Contact Number :" />
+                    <h:inputText id="contactNumber" value="#{addUserUI.contactNumber}" class="input input-bordered input-primary w-full max-w-xs"/>
+                </div>
                 
-                <h:outputLabel for="username" value="Enter Username:" />
-                <h:inputText id="username" value="#{addUserUI.username}" class="input input-bordered input-primary w-full max-w-xs"/><br/><br/>
+                <div class="form-row">
+                    <h:outputLabel for="username" value="Enter Username :" />
+                    <h:inputText id="username" value="#{addUserUI.username}" class="input input-bordered input-primary w-full max-w-xs"/>
+                </div>
                 
-                <h:outputLabel for="password" value="Enter Password:" />
-                <h:inputSecret id="password" value="#{addUserUI.password}" class="input input-bordered input-primary w-full max-w-xs"/><br/><br/>
+                <div class="form-row">
+                    <h:outputLabel for="password" value="Enter Password :" />
+                    <h:inputSecret id="password" value="#{addUserUI.password}" class="input input-bordered input-primary w-full max-w-xs"/>
+                </div>
                 
-                <h:outputLabel for="department" value="Select Department:" />
-                <h:selectOneMenu id="department" value="#{addUserUI.departmentId}" class="input input-bordered input-primary w-full max-w-xs">
-                    <f:selectItems value="#{addUserUI.departments}" var="department" itemValue="#{department.id}" itemLabel="#{department.name}" />
-                </h:selectOneMenu><br/><br/>
+                <div class="form-row">
+                    <h:outputLabel for="department" value="Select Department :" />
+                    <h:selectOneMenu id="department" value="#{addUserUI.departmentId}" class="input input-bordered input-primary w-full max-w-xs">
+                        <f:selectItems value="#{addUserUI.departments}" var="department" itemValue="#{department.id}" itemLabel="#{department.name}" />
+                    </h:selectOneMenu>
+                </div>
                 
-                <h:outputLabel for="designation" value="Select Designation:" />
-                <h:selectOneMenu id="designation" value="#{addUserUI.designationId}" class="input input-bordered input-primary w-full max-w-xs">
-                    <f:selectItems value="#{addUserUI.designations}" var="designation" itemValue="#{designation.id}" itemLabel="#{designation.name}" />
-                </h:selectOneMenu><br/><br/>
-            </h:panelGrid>
-            <h:commandButton class="btn btn-accent" action="#{addUserUI.save()}" value="Add User" />
-        </h:form>
+                <div class="form-row">
+                    <h:outputLabel for="designation" value="Select Designation :" />
+                    <h:selectOneMenu id="designation" value="#{addUserUI.designationId}" class="input input-bordered input-primary w-full max-w-xs">
+                        <f:selectItems value="#{addUserUI.designations}" var="designation" itemValue="#{designation.id}" itemLabel="#{designation.name}" />
+                    </h:selectOneMenu>
+                </div>
+                <br />
+                <div class="btn-container">
+                    <h:commandButton action="#{addUserUI.save()}" value="Add User" styleClass="custom-button" />
+                </div>
+            </div>
+            </h:form>
    </ui:define>
 </ui:composition>

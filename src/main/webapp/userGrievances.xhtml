@@ -17,11 +17,27 @@
             padding: 8px;
             text-align: left;
         }
+         .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center; 
+                justify-content: center; 
+                height: 97vh; 
+            }
+            .table-container {
+                margin-left: 4rem;
+            }
+            .link-container {
+                display: flex;
+                justify-content: center; 
+            }
     </style>
 </h:head>
 
 <h:body>
     <h:form>
+    <div class="container">
+                <div class="table-container">
         <h:dataTable value="#{viewUserGrievancesUI.userGrievances}" var="grievance" styleClass="grievance-table">
             <h:column>
                 <f:facet name="header">ID</f:facet>
@@ -71,7 +87,12 @@
                 </ui:fragment>
             </h:column>
         </h:dataTable>
+        </div>
+        <br/>
+        <div class="link-container">
         <h:commandLink class="link link-secondary" action="addGrievance" value="Add Grievance" /><br/>
+    </div>
+    </div>
     </h:form>
 </h:body>
 </html>

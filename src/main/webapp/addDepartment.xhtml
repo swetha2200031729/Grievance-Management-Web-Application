@@ -7,14 +7,53 @@
 	 <ui:define name="head">
      <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
      <script src="https://cdn.tailwindcss.com"></script>
+      <style>
+     .form-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                width: 100%;
+            }
+     .btn-container {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                max-width: 800px;
+            }
+            .btn-container .btn {
+                margin-top: 0.5rem;
+            }
+            .custom-button {
+                background-color: #484744; 
+                color: white;
+                border: none;
+                padding: 10px 250px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                cursor: pointer;
+                border-radius: 4px;
+                 transition: background-color 0.5s;
+                 }
+            .custom-button:hover {
+                background-color: #B2B2B6; 
+            }
+     </style>
      
       </ui:define>
     <ui:define name="content">
  	
  	<h:form>
+ 	<div class="form-container">
+		<div>
 	 Enter Department name :
 	<h:inputText value = "#{addDepartmentUI.departmentName}" class="input input-bordered input-primary w-full max-w-xs"/><br/><br/>
-	<h:commandButton class="btn btn-accent" action="#{addDepartmentUI.addDepartment()}" value="add" />
+	<h:commandButton class="btn-container" action="#{addDepartmentUI.addDepartment()}" value="Add"  styleClass="custom-button"/>
+	</div>
+	</div>
 	</h:form>	
  </ui:define>
 </ui:composition>

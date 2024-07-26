@@ -3,16 +3,68 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html">
-      <ui:define name="head">
-     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
-     <script src="https://cdn.tailwindcss.com"></script>
-     </ui:define>
-	<ui:define name="content">
-	<h:form>
-	 	Username :<h:inputText value = "#{loginUI.username}" class="input input-bordered input-primary w-full max-w-xs"/><br/><br/>
-	 	Password :<h:inputSecret value = "#{loginUI.password}" class="input input-bordered input-primary w-full max-w-xs"/><br/><br/>
-		<h:commandButton class="btn btn-accent" action="#{loginUI.login()}" value="Login" />
-	</h:form>
-
-</ui:define>
+    <ui:define name="head">
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+            .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center; /* Center horizontally */
+                justify-content: center; /* Center vertically */
+                height: 100vh; /* Full viewport height */
+            }
+            .form-container {
+                background-color: #ffffff; 
+                padding: 20px;
+                margin-left: 15rem;
+                align-items: center;
+                border-radius: 8px; 
+                box-shadow: 15px 13px 15px rgba(0,0,0,0.1); 
+                width: 100%;
+                max-width: 400px;
+                box-sizing: border-box; 
+            }
+            .input-custom {
+                border-color: #007bff; 
+                background-color: #e9ecef; 
+                color: #495057; 
+                padding: 10px; 
+                border-radius: 4px; 
+                width: 100%; 
+                margin-bottom: 15px; 
+            }
+            .btn-custom {
+                background-color:  #484744; 
+                color: #ffffff; 
+                padding: 10px 20px; 
+                border: none;
+                border-radius: 4px;
+                cursor: pointer; 
+                width: 100%; 
+                font-size: 16px;
+                transition: background-color 0.3s; 
+            }
+            .btn-custom:hover {
+                background-color: #B2B2B6; 
+            }
+        </style>
+    </ui:define>
+    <ui:define name="content">
+        <div class="container">
+            <div class="form-container">
+                <h:form>
+                    <div class="mb-4">
+                        Username:
+                        <h:inputText value="#{loginUI.username}" styleClass="input-custom" />
+                    </div>
+                    <div class="mb-4">
+                        Password:
+                        <h:inputSecret value="#{loginUI.password}" styleClass="input-custom" />
+                    </div>
+                    <h:commandButton class="btn-custom" action="#{loginUI.login()}" value="Login" />
+                </h:form>
+            </div>
+        </div>
+    </ui:define>
 </ui:composition>

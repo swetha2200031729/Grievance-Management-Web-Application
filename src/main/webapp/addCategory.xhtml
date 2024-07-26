@@ -1,21 +1,62 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition template = "/adminTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+<ui:composition template="/adminTemplate.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
 
-	<ui:define name="head">
-     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
-     <script src="https://cdn.tailwindcss.com"></script>
-     
-      </ui:define>
- <ui:define name="content">
- 	
-<h:form>
-		
-	 Enter Category` name :<h:inputText value = "#{addCategoryUI.categoryName}" class="input input-bordered input-primary w-full max-w-xs"/><br/><br/>
-		<h:commandButton class="btn btn-accent" action="#{addCategoryUI.addCategory()}" value="add" />
-	</h:form>
+    <ui:define name="head">
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+        <script src="https://cdn.tailwindcss.com"></script>
+         <style>
+     .form-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                width: 100%;
+            }
+     .btn-container {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                max-width: 800px;
+            }
+            .btn-container .btn {
+                margin-top: 0.5rem;
+            }
+            .custom-button {
+                background-color: #484744; 
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                cursor: pointer;
+                border-radius: 4px;
+                 transition: background-color 0.5s;
+                 }
+            .custom-button:hover {
+                background-color: #B2B2B6; 
+            }
+     </style>
+        
+    </ui:define>
 
-</ui:define>
+    <ui:define name="content">
+        <h:form class="space-y-4 max-w-md mx-auto mt-8">
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text">Enter Category name:</span>
+                </label>
+                <h:inputText value="#{addCategoryUI.categoryName}" class="input input-bordered input-primary w-full" />
+            </div>
+            <div class="form-control">
+                <h:commandButton class="btn-container" action="#{addCategoryUI.addCategory()}" value="Add" styleClass="custom-button" />
+            </div>
+        </h:form>
+    </ui:define>
 </ui:composition>
