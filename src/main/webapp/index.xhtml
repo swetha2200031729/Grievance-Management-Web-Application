@@ -1,19 +1,136 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:head>
-    <!-- <title>User Registration</title>-->
-    <link rel="stylesheet" type="text/css" href="styles.css" />
-</h:head>
-<h:body>
-    <h:form>
-       <!--  <h:inputText value = "#{todoItemUI.text}"></h:inputText>
-        <h:commandButton action="#{todoItemUI.save()}" value="save" /> -->
-        <div class="navbar">
-            <h:commandButton value="Employee" action="#{yourBean.employeeAction}" styleClass="button" />
-            <h:commandButton value="Admin" action="#{yourBean.aminAction}" styleClass="button" />
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://www.java.sun.com/jsf/core"
+      xmlns:h="http://www.java.sun.com/jsf/html">
+
+<head>
+    <title>Corporate Grievance Management System</title>
+    <style>
+        /* Add styles for the navigation bar */
+        ul.navbar {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #333;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 10;
+            border-radius: 0 0 10px 10px; /* Round the bottom corners of the navbar */
+            display: flex;
+            justify-content: center; /* Center the navbar items */
+        }
+
+        ul.navbar li {
+            display: inline-block; /* Inline-block to keep them centered */
+        }
+
+        ul.navbar li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 30px 20px; /* Increase padding for thicker navbar */
+            text-decoration: none;
+            font-size: 1.5em; /* Make text larger */
+            border-radius: 10px; /* Round the corners of the links */
+        }
+
+        ul.navbar li a:hover {
+            background-color: #555;
+        }
+
+        /* Styles for the heading */
+        h1 {
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            background-color: #f4f4f4; /* Optional: Add background color for contrast */
+            border-bottom: 2px solid #ddd; /* Optional: Add border for separation */
+            margin-top: 100px; /* Add space below the navbar */
+        }
+
+        /* Styles for the main container */
+        .main-container {
+            margin-top: 20px; /* Space between heading and image/text */
+            padding: 20px; /* Add padding around the container */
+        }
+
+        /* Styles for the background image */
+        .background {
+            width: 100%;
+            height: auto;
+        }
+
+        .background img {
+            width: 100%;
+            height: auto;
+            border: 2px solid black; /* Add border around the image */
+            border-radius: 10px; /* Make corners round */
+            margin-bottom: 20px; /* Space between image and text content */
+        }
+
+        /* Styles for the text content */
+        .content {
+            padding: 20px;
+            color: #000;
+            background-color: #fff; /* Optional: add background color to make text more readable */
+            border: 2px solid grey; /* Add a grey border around the text */
+            border-radius: 10px; /* Make corners round */
+            overflow-y: auto;
+        }
+
+        /* Styles for the footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            border-top: 2px solid #ddd; /* Optional: Add a border at the top of the footer */
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer .contact-info {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <ul class="navbar">
+        <li><a href="#">User</a></li>
+        <li><a href="#">Admin</a></li>
+    </ul>
+
+    <h1>Welcome to Corporate Grievance Management System</h1>
+
+    <div class="main-container">
+        <div class="background">
+            <img src="resource/EP_HOME2.jpg" alt="EP Home"/>
         </div>
-    </h:form>
-</h:body>
+        <div class="content">
+            <h2>Efficient Grievance Management System for a Better Workplace</h2>
+            <h2>Introduction</h2>
+            <h4>A grievance management system allows individuals to raise concerns about how company activities impact their rights.</h4>
+            <h4>It provides a formal process for addressing dissatisfaction related to work, working conditions, or treatment by supervisors or colleagues.</h4>
+        </div>
+    </div>
+
+    <footer>
+        <p>Contact Us</p>
+        <div class="contact-info">
+            <p>Email: support@grievance.com</p>
+            <p>Phone: +91 8906574566</p>
+        </div>
+    </footer>
+</body>
 </html>
