@@ -8,26 +8,52 @@ import java.util.stream.Collectors;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import com.grievancemanagement.dao.DepartmentRepository;
 import com.grievancemanagement.dao.GrievanceRepository;
+import com.grievancemanagement.entity.Department;
 import com.grievancemanagement.entity.Grievance;
 
-@ManagedBean(eager=true, name="bodPanelUI")
-public class BODPanelUI {
+import lombok.Getter;
+import lombok.Setter;
 
-	@EJB
+@ManagedBean(eager=true,name="allGrievancesUI")
+@ViewScoped
+public class AllGrievancesUI {
+	
+	@EJB 
 	private GrievanceRepository grievanceRepository;
 	
 	@EJB
 	private DepartmentRepository departmentRepository;
 	
-	private List<Grievance> grievances = new ArrayList<>();
+	@Getter
+	private List<Grievance> allGrievances;
 	
+	@Getter
+	@Setter
+	private List<Grievance> grievances;
+
+	@Getter
+	@Setter
+	private List<Department> departments;
+	
+	@Getter
+	@Setter
+	private Long selectedDepartmentId;
 	
 	@PostConstruct
 	public void init() {
-		grievances = grievanceRepository.findAll();
+		allGrievances = grievanceRepository.findAll();
+		departments = departmentRepository.findAll();
+		String idString = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
+		if (idString == null) {
+			grievances = new ArrayList<>(allGrievances);
+		} else {
+			grievances = allGrievances.stream().filter(grievance -> grievance.getDepartment().getId() == Long.parseLong(idString)).collect(Collectors.toList());
+		}
 	}
 	
 	public List<Grievance> getPendingGrievances() {
@@ -42,6 +68,10 @@ public class BODPanelUI {
 				.filter(grievance -> Objects.nonNull(grievance.getGrievanceReply()))
 				.sorted((a, b) -> b.getGrievanceReply().getRepliedAt().compareTo(a.getGrievanceReply().getRepliedAt()))
 				.collect(Collectors.toList());
+	}
+	
+	public String applyFilter(Long id) {
+		return "allGrievances.jsf?id=" + id + "&faces-redirect=true";
 	}
 	
 }

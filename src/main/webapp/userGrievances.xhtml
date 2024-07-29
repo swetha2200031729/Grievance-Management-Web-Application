@@ -1,10 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+<ui:composition template="/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
 
-<h:head>
+<ui:define name="head">
     <style>
         table {
             border-collapse: collapse;
@@ -32,10 +33,11 @@
                 justify-content: center; 
             }
     </style>
-</h:head>
+</ui:define>
 
-<h:body>
-    <h:form>
+<ui:define name="content">
+	<br /><br /><br />
+	<h:outputText value="My Grievances" style="text-align: center; color: black;" />
     <div class="container">
                 <div class="table-container">
         <h:dataTable value="#{viewUserGrievancesUI.userGrievances}" var="grievance" styleClass="grievance-table">
@@ -93,6 +95,5 @@
         <h:commandLink class="link link-secondary" action="addGrievance" value="Add Grievance" /><br/>
     </div>
     </div>
-    </h:form>
-</h:body>
-</html>
+</ui:define>
+</ui:composition>

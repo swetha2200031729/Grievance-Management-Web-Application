@@ -5,6 +5,9 @@
       xmlns:h="http://java.sun.com/jsf/html">
 
     <ui:define name="head">
+    <script>
+		document.getElementsByTagName("tr").forEach(ele => ele.class = "hover");
+    </script>
         <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
         <script src="https://cdn.tailwindcss.com"></script>
         <style>
@@ -43,7 +46,7 @@
         <h:form>
             <div class="container">
                 <div class="table-container">
-                    <h:dataTable value="#{categoryHomeUI.categories}" var="category">
+                    <h:dataTable styleClass="table" value="#{categoryHomeUI.categories}" var="category">
                         <h:column>
                             <f:facet name="header">ID</f:facet>
                             <h:outputText value="#{category.id}" />

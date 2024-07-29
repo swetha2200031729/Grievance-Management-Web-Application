@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition template ="/bodTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition template="/template.xhtml" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html">
@@ -8,7 +8,8 @@
     <style>
         table {
             border-collapse: collapse;
-            width: auto;
+            width: 100%;
+            margin: 0 auto;
         }
         table, th, td {
             border: 1px solid black;
@@ -17,12 +18,42 @@
             padding: 8px;
             text-align: left;
         }
+        th {
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+        .center-text {
+            text-align: center;
+        }
+        .container {
+            margin: 0 auto;
+            width: 80%;
+        }
+        .table-title {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+.datatable tr:nth-child(even) {
+                background-color: #f2f2f2; /* Even rows background color */
+            }
     </style>
 </ui:define>
 
 <ui:define name="content">
-    	<h2>Pending Grievances</h2>
-        <h:dataTable value="#{bodPanelUI.pendingGrievances}" var="grievance" styleClass="grievance-table">
+    <div class="container">
+        <br /><br /><br /><br /><br />
+        <h1 class="table-title">All Grievances</h1>
+        <hr />
+        <h:dataTable value="#{allGrievancesUI.departments}" var="department" styleClass="datatable">
+            <h:column>
+                <f:facet name="header">Departments</f:facet>
+                <h:commandLink action="#{allGrievancesUI.applyFilter(department.id)}" value="#{department.name}" />
+            </h:column>
+        </h:dataTable>
+
+        <h2 class="table-title">Pending Grievances</h2>
+        <h:dataTable value="#{allGrievancesUI.pendingGrievances}" var="grievance" styleClass="grievance-table">
             <h:column>
                 <f:facet name="header">ID</f:facet>
                 <h:outputText value="#{grievance.id}" />
@@ -49,15 +80,17 @@
             </h:column>
             <h:column>
                 <f:facet name="header">Reply</f:facet>
-                <h:commandLink action="grievanceReply" value="Reply to the Issue">
-                	<f:param name="id" value="#{grievance.id}"></f:param>
-                </h:commandLink>
+                <ui:fragment rendered="#{authenticationBean.boardOfDirector or authenticationBean.user.department.id == grievance.department.id}">
+                    <h:commandLink action="grievanceReply.jsf" value="Reply to the Issue">
+                        <f:param name="id" value="#{grievance.id}"></f:param>
+                        <f:param name="faces-redirect" value="true"></f:param>
+                    </h:commandLink>
+                </ui:fragment>
             </h:column>
-            
         </h:dataTable>
         <br/><br/>
-        <h2>Solved Grievances</h2>
-        <h:dataTable value="#{bodPanelUI.solvedGrievances}" var="grievance" styleClass="grievance-table">
+        <h2 class="table-title">Solved Grievances</h2>
+        <h:dataTable value="#{allGrievancesUI.solvedGrievances}" var="grievance" styleClass="grievance-table">
             <h:column>
                 <f:facet name="header">ID</f:facet>
                 <h:outputText value="#{grievance.id}" />
@@ -82,7 +115,25 @@
                 <f:facet name="header">Created By</f:facet>
                 <h:outputText value="#{grievance.user.username}" />
             </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Replied At" />
+                </f:facet>
+                <h:outputText value="#{grievance.grievanceReply.repliedAt}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Reply" />
+                </f:facet>
+                <h:outputText value="#{grievance.grievanceReply.reply}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Replied By" />
+                </f:facet>
+                <h:outputText value="#{grievance.grievanceReply.repliedBy.username}" />
+            </h:column>
         </h:dataTable>
-      
+    </div>
 </ui:define>
 </ui:composition>

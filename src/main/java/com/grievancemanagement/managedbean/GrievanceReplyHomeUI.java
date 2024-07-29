@@ -18,7 +18,7 @@ public class GrievanceReplyHomeUI {
 		return grievanceReplyRepository.findAll();
 	}
 	
-	public void delete(long id) {
+	public void delete(Long id) {
 		grievanceReplyRepository.deleteById(id);
 	}
 	

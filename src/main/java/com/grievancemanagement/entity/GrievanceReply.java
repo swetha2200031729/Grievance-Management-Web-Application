@@ -18,7 +18,7 @@ public class GrievanceReply {
 	
 	@Id
 	@GeneratedValue
-	private int id;
+	private long id;
 	
 	@OneToOne
 	private Grievance grievance;

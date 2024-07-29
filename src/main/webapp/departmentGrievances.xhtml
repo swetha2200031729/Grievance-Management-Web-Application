@@ -4,14 +4,6 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html">
 
-	<h:head>
-	    <title><ui:insert name="title">Default Title</ui:insert></title>
-	    <ui:insert name="head"></ui:insert>
-	    
-	</h:head>
-	<h:body>
-		<ui:fragment rendered ="#{authenticationBean.boardOfDirector}">
-		<ui:insert name="content">Default Content</ui:insert>
-		</ui:fragment>	
-	</h:body>
+	<ui:composition template="">
+	</ui:composition>
 </html>

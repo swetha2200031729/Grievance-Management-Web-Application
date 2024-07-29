@@ -4,7 +4,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html">
 
-	<ui:define name="head">
+  <ui:define name="head">
 <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
@@ -35,16 +35,40 @@
                 display: flex;
                 justify-content: center; 
                 margin-left: 15rem;
-                gap: 9rem;
+                gap: 7rem;
             }
+            .datatable tr:nth-child(even) {
+                background-color: #f2f2f2; /* Even rows background color */
+            }
+            .datatable th{
+              background-color: #484744;
+                color: #ffffff;
+                text-align: left;
+                padding: 10px;
+                border-bottom: 2px solid #ddd;
+                }
+                  .delete-btn {
+                background-color: #d9534f;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                padding: 5px 10px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+            .delete-btn:hover {
+                background-color: #c9302c;
+            }
+            
         </style>
 </ui:define>
-	<ui:define name="content">
-	
-	<h:form>
-	<div class="container">
+  <ui:define name="content">
+  
+  <h:form>
+  <div class="container">
                 <div class="table-container">
-		 <h:dataTable value="#{departmentHomeUI.departments}" var="department">
+     <h:dataTable value="#{departmentHomeUI.departments}" var="department" styleClass="datatable">
             <h:column>
                 <f:facet name="header">ID</f:facet>
                 <h:outputText value="#{department.id}" />
@@ -55,15 +79,17 @@
             </h:column>
              <h:column>
                 <f:facet name="header">Delete</f:facet>
-                <h:commandButton action="#{departmentHomeUI.delete(department.id)}" value="Delete" />
+                <h:commandButton action="#{departmentHomeUI.delete(department.id)}" value="Delete" styleClass="delete-btn"/>
             </h:column>
         </h:dataTable>
         </div>
         <div class="link-container">
-        	<h:commandLink styleClass="link link-secondary" action="addDepartment" value="Add Department" /> <br/>
-        	<h:commandButton styleClass="link link-secondary" value="Export to CSV" action="#{departmentExport.download()}" />
-	</div>
-	</div>
-	</h:form>
-	</ui:define>
+          <h:commandLink styleClass="link link-secondary" action="addDepartment" value="Add Department" /> <br/><br />
+          </div>
+          <div>
+          <h:commandButton  value="Export to CSV" action="#{departmentExport.download()}" />
+  </div>
+  </div>
+  </h:form>
+  </ui:define>
 </ui:composition>

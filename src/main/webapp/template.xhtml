@@ -7,10 +7,87 @@
 	<h:head>
 	    <title><ui:insert name="title">Default Title</ui:insert></title>
 	    <ui:insert name="head"></ui:insert>
-	    
+	    <style>
+	    	ul.navbar {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #333;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 10;
+            border-radius: 0 0 10px 10px; /* Round the bottom corners of the navbar */
+            display: flex;
+            justify-content: right; /* Center the navbar items */
+        }
+
+        ul.navbar li {
+            display: inline-block; /* Inline-block to keep them centered */
+        }
+
+        ul.navbar li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 30px 20px; /* Increase padding for thicker navbar */
+            text-decoration: none;
+            font-size: 1.5em; /* Make text larger */
+            border-radius: 10px; /* Round the corners of the links */
+        }
+
+        ul.navbar li a:hover {
+            background-color: #555;
+        }
+	    </style>
 	</h:head>
 	<h:body>
+	<h:form>
+		<ul class="navbar">
+		<li>
+                <h:commandLink value="Home" action="index.jsf?faces-redirect=true" styleClass="nav-link">
+                    
+                </h:commandLink>
+            </li>
+       
+            <li>
+                <h:commandLink value="View My Grievances" action="userGrievances.jsf?faces-redirect=true" styleClass="nav-link">
+                    
+                </h:commandLink>
+            </li>
+            <ui:fragment rendered="#{authenticationBean.admin}">
+            <li>
+            <h:commandLink action="adminPanel.jsf?faces-redirect=true" value="Admin" styleClass="nav-link" />
+            </li>
+            </ui:fragment>
+            <ui:fragment rendered="#{not authenticationBean.loggedIn}">
+            <li>
+                <h:commandLink value="Login" action="login.jsf?faces-redirect=true" styleClass="nav-link">
+                    
+                </h:commandLink>
+            </li>
+            </ui:fragment>
+            <ui:fragment rendered="#{authenticationBean.loggedIn}">
+            <li>
+                <h:commandLink value="All Grievances" action="allGrievances.jsf?faces-redirect=true" styleClass="nav-link">
+                    
+                </h:commandLink>
+            </li>
+            </ui:fragment>
+            <ui:fragment rendered="#{authenticationBean.loggedIn}">
+            <li>
+                <h:commandLink value="Logout" action="#{authenticationBean.logout()}" styleClass="nav-link">
+                    
+                </h:commandLink>
+            </li>
+            </ui:fragment>
+        </ul>
+		
 	    <ui:insert name="content">Default Content</ui:insert>
+		</h:form>
 	</h:body>
 	
 </html>

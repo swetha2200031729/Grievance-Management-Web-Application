@@ -39,14 +39,24 @@
                 gap: 7rem;
                 margin-left: 15rem;
             }
+            .datatable tr:nth-child(even) {
+                background-color: #f2f2f2; /* Even rows background color */
+            }
+            .datatable th{
+              background-color: #484744;
+                color: #ffffff;
+                text-align: left;
+                padding: 10px;
+                border-bottom: 2px solid #ddd;
+                }
     </style>
        
 </ui:define>
-	<ui:define name="content">
-	<h:form>
-	<div class="container">
+  <ui:define name="content">
+  <h:form>
+  <div class="container">
                 <div class="table-container">
-		 <h:dataTable value="#{userHomeUI.users}" var="user">
+     <h:dataTable value="#{userHomeUI.users}" var="user" styleClass="datatable">
             <h:column>
                 <f:facet name="header">ID</f:facet>
                 <h:outputText value="#{user.id}" />
@@ -88,14 +98,14 @@
                 <f:facet name="header">Delete</f:facet>
                 <h:commandButton action="#{userHomeUI.delete(user.id)}" value="Delete" />  
             </h:column>
-       	    </h:dataTable>
-       	    </div>
-       	    <br/>
-       	    <div class="link-container">
-        	<h:commandLink class="link link-secondary" action="addUser" value="Add User" />
-		<br/> <h:commandButton styleClass="link link-secondary" value="Export to CSV" action="#{userExport.download()}" />
-			    </div>
+             </h:dataTable>
+             </div>
+             <br/>
+             <div class="link-container">
+          <h:commandLink class="link link-secondary" action="addUser" value="Add User" />
+    <br/> <h:commandButton styleClass="link link-secondary" value="Export to CSV" action="#{userExport.download()}" />
+          </div>
         </div>
-	</h:form>
-	</ui:define>
+  </h:form>
+  </ui:define>
 </ui:composition>

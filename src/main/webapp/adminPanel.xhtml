@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template= "/adminTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<ui:define name="head">
+
+<style>
+.btn-custom {
+               
+ background-color: #484744;
+                color: #ffffff;
+                padding: 35px 10px;
+                border: none;
+                align-items: center;
+                border-radius: 4px;
+                cursor: pointer;
+                width: 50%;
+                font-size: 16px;
+                transition: background-color 0.3s;
+                margin-left: 30rem;
+                 margin-bottom: 8rem;
+            }
+            .btn-custom:hover {
+                background-color: #B2B2B6;
+            }
+            .h1{
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            background-color: #f4f4f4; /* Optional: Add background color for contrast */
+            border-bottom: 2px solid #ddd; /* Optional: Add border for separation */
+            margin-top: 100px;
+            }
+</style>
+</ui:define>
+<ui:define name="content">
+<br /><br /><br /><br /><br /><br />
+<h:form>
+<div class="link-container">
+<h1 style="text-align: center;">ADMIN PANEL</h1><br /><hr /><br /><br />
+<h:commandButton action="departmentHome.jsf?faces-redirect=true" value="Departments" styleClass="btn-custom" /> <br />
+<h:commandButton action="adminDesignation.jsf?faces-redirect=true" value="Designations" styleClass="btn-custom" /> <br />
+<h:commandButton action="categoryHome.jsf?faces-redirect=true" value="Categories" styleClass="btn-custom"/><br />
+<h:commandButton action="userHome.jsf?faces-redirect=true" value="Users" styleClass="btn-custom" /> 
+</div>
+</h:form>
+</ui:define>
+	
+</ui:composition>

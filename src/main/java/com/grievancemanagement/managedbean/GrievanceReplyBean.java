@@ -18,7 +18,7 @@ import lombok.Setter;
 @ManagedBean(name = "grievanceReplyBean", eager = true)
 @ViewScoped
 public class GrievanceReplyBean {
-
+	
 	@ManagedProperty(value = "#{authenticationBean}")
 	@Getter
 	@Setter
@@ -61,6 +61,7 @@ public class GrievanceReplyBean {
 		grievanceReply.setReply(replyText);
 		grievanceReply.setRepliedBy(authenticationBean.getUser());
 		grievanceReplyRepository.save(grievanceReply);
-		return "bodPanel.jsf?faces-redirect=true";
+		
+		return "allGrievances.jsf?faces-redirect=true";
 	}
 }

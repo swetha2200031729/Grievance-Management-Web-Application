@@ -46,8 +46,9 @@ public class AuthenticationBean {
     public boolean isLoggedIn() {
         return userId != null;
     }
-    public void logout() {
+    public String logout() {
     	userId = null;
+    	return "login.jsf?faces-redirect=true";
     }
     public boolean isAdmin() {
     	

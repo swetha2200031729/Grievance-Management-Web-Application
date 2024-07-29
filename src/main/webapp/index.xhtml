@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition template="/template.xhtml" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://www.java.sun.com/jsf/core"
-      xmlns:h="http://www.java.sun.com/jsf/html">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
 
-<head>
+<ui:define name="head">
     <title>Corporate Grievance Management System</title>
     <style>
         /* Add styles for the navigation bar */
@@ -22,7 +22,7 @@
             z-index: 10;
             border-radius: 0 0 10px 10px; /* Round the bottom corners of the navbar */
             display: flex;
-            justify-content: center; /* Center the navbar items */
+            justify-content: right; /* Center the navbar items */
         }
 
         ul.navbar li {
@@ -104,33 +104,28 @@
             margin-top: 10px;
         }
     </style>
-</head>
-<body>
-    <ul class="navbar">
-        <li><a href="#">User</a></li>
-        <li><a href="#">Admin</a></li>
-    </ul>
+</ui:define>
+<ui:define name="content">
 
-    <h1>Welcome to Corporate Grievance Management System</h1>
+        <h1>Welcome to Corporate Grievance Management System</h1>
+        <div class="main-container">
+            <div class="background">
+                <h:graphicImage value="/resource/EP_HOME2.jpg" alt="EP Home" style="border: 2px solid black; border-radius: 10px; margin-bottom: 20px;"/>
+            </div>
+            <div class="content">
+                <h2>Efficient Grievance Management System for a Better Workplace</h2>
+                <h2>Introduction</h2>
+                <h4>A grievance management system allows individuals to raise concerns about how company activities impact their rights.</h4>
+                <h4>It provides a formal process for addressing dissatisfaction related to work, working conditions, or treatment by supervisors or colleagues.</h4>
+            </div>
+        </div>
 
-    <div class="main-container">
-        <div class="background">
-            <img src="resource/EP_HOME2.jpg" alt="EP Home"/>
-        </div>
-        <div class="content">
-            <h2>Efficient Grievance Management System for a Better Workplace</h2>
-            <h2>Introduction</h2>
-            <h4>A grievance management system allows individuals to raise concerns about how company activities impact their rights.</h4>
-            <h4>It provides a formal process for addressing dissatisfaction related to work, working conditions, or treatment by supervisors or colleagues.</h4>
-        </div>
-    </div>
-
-    <footer>
-        <p>Contact Us</p>
-        <div class="contact-info">
-            <p>Email: support@grievance.com</p>
-            <p>Phone: +91 8906574566</p>
-        </div>
-    </footer>
-</body>
-</html>
+        <footer>
+            <p>Contact Us</p>
+            <div class="contact-info">
+                <p>Email: support@grievance.com</p>
+                <p>Phone: +91 8906574566</p>
+            </div>
+        </footer>
+</ui:define>
+</ui:composition>

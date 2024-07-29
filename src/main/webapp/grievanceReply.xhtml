@@ -7,13 +7,19 @@
 	<ui:define name="head">
      <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
      <script src="https://cdn.tailwindcss.com"></script>
-     
+     <script>
+
+		document.getElementsByTagName("textarea").forEach((ele) => {
+			ele.style.backgroundColor = '#f0f0f0';
+		});
+     </script>
       </ui:define>
 <ui:define name="content">
 
-	<h:outputText value="Grievance Reply: ##{grievanceReplyBean.grievanceId}" />
+<br /><br /><br /><br /><br />
+
+	<h1>Grievance Reply: ##{grievanceReplyBean.grievanceId}</h1>
 	<hr />
-	<h:form>
 	
 	<table border="1">
 		<tr><td><b>Issue:</b></td> <td><h:outputText value="#{grievanceReplyBean.grievance.issue}" /></td></tr>
@@ -53,13 +59,12 @@
 				<b>Reply:</b>
 				</td>
 				<td>
-				<h:inputTextarea value="#{grievanceReplyBean.replyText}" /><br />
+				<h:inputTextarea style="background: #f0f0f0; padding: 1px;" value="#{grievanceReplyBean.replyText}" /><br />
 				</td>
 			</tr>
 			<tr><td><h:commandButton action="#{grievanceReplyBean.saveReply()}" value="Send Reply" /></td></tr>
 		</ui:fragment>
 	</table>
-	</h:form>
 
 </ui:define>
 </ui:composition>

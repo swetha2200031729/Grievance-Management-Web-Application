@@ -1,37 +1,95 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition template ="/adminTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition template="/adminTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html">
-<ui:define name="head">
+    <ui:define name="head">
+        <style>
+            /* General Table Styles */
+            .styled-table {
+                width: 100%;
+                border-collapse: collapse;
+                font-family: Arial, sans-serif;
+                margin: 20px 0;
+                box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+            }
 
+            /* Table Header Styles */
+            .styled-table th {
+                background-color: #484744;
+                color: #ffffff;
+                text-align: left;
+                padding: 10px;
+                border-bottom: 2px solid #ddd;
+            }
 
-</ui:define>
-	
-	<ui:define name="content">
-	<h:form>
-		 <h:dataTable value="#{grievanceReplyHomeUI.grievanceReply}" var="grievances">
-            <h:column>
-                <f:facet name="header">ID</f:facet>
-                <h:outputText value="#{grievanceReply.id}" />
-            </h:column>
-            <h:column>
-                <f:facet name="header">Replied At</f:facet>
-                <h:outputText value="#{grievanceReply.repliedAt}" />
-            </h:column>
-            <h:column>
-                <f:facet name="header">Reply</f:facet>
-                <h:outputText value="#{grievanceReply.reply}" />
-            </h:column>
-            <h:column>
-                <f:facet name="header">Replied By</f:facet>
-                <h:outputText value="#{grievanceReply.replyiedBy.getName()}" />
-            </h:column>
-             <h:column>
-                <f:facet name="header">Delete</f:facet>
-                <h:commandButton action="#{grievanceReplyHomeUI.delete(grievanceReply.id)}" value="Delete" />
-            </h:column>
-        </h:dataTable>
-	</h:form>
-	 </ui:define>
+            /* Table Row Styles */
+            .styled-table td {
+                padding: 10px;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .styled-table tr:nth-child(even) {
+                background-color: #f2f2f2; /* Even rows background color */
+            }
+
+            .styled-table tr:hover {
+                background-color: #ddd; /* Hover effect */
+            }
+
+            /* Button Styles */
+            .delete-btn {
+                background-color: #d9534f;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                padding: 5px 10px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+            .delete-btn:hover {
+                background-color: #c9302c;
+            }
+        </style>
+    </ui:define>
+
+    <ui:define name="content">
+    <br /><br /><br /><br />
+        <h:form>
+            <h:dataTable value="#{grievanceReplyHomeUI.grievanceReply}" var="grievanceReply" styleClass="styled-table">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="ID" />
+                    </f:facet>
+                    <h:outputText value="#{grievanceReply.id}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Replied At" />
+                    </f:facet>
+                    <h:outputText value="#{grievanceReply.repliedAt}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Reply" />
+                    </f:facet>
+                    <h:outputText value="#{grievanceReply.reply}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Replied By" />
+                    </f:facet>
+                    <h:outputText value="#{grievanceReply.repliedBy.username}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Delete" />
+                    </f:facet>
+                    <h:commandButton action="#{grievanceReplyHomeUI.delete(grievanceReply.id)}" value="Delete" styleClass="delete-btn" />
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </ui:define>
 </ui:composition>

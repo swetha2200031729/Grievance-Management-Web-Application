@@ -64,20 +64,28 @@
     </ui:define>
     <ui:define name="content">
         <h:form>
+        <br/><br/><br/><br/><br/>
              <div class="form-container">
                 <div class="form-row">
                     <h:outputLabel for="firstName" value="Enter First Name :"/>
-                    <h:inputText id="firstName" value="#{addUserUI.firstName}" class="input input-bordered input-primary w-full max-w-xs"/>
+                    <h:inputText id="firstName" value="#{addUserUI.firstName}" class="input input-bordered input-primary w-full max-w-xs" validatorMessage="First Name is required">
+			<f:validateRequired />
+		    </h:inputText>
+		    <h:message for="firstName" style="color: red;" />
                 </div>
                 
                 <div class="form-row">
                     <h:outputLabel for="lastName" value="Enter Last Name :"/>
-                    <h:inputText id="lastName" value="#{addUserUI.lastName}" class="input input-bordered input-primary w-full max-w-xs"/>
+                    <h:inputText id="lastName" value="#{addUserUI.lastName}" class="input input-bordered input-primary w-full max-w-xs" validatorMessage="Last Name is required">
+			<f:validateRequired />
+		    </h:inputText>
+		    <h:message for="lastName" style="color: red;" />
+
                 </div>
                 
                 <div class="form-row">
                     <h:outputLabel for="dateOfBirth" value="Enter Date of Birth :"/>
-                    <h:inputText id="dateOfBirth" value="#{addUserUI.dateOfBirth}" class="input input-bordered input-primary w-full max-w-xs">
+                    <h:inputText id="dateOfBirth" value="#{addUserUI.dateOfBirth}" class="input input-bordered input-primary w-full max-w-xs" validatorMessage="The date of birth should be in the format yyyy-mm-dd">
                         <f:validateRegex pattern="\d{4}-\d{2}-\d{2}" />
                     </h:inputText>
                     <h:message for="dateOfBirth" style="color: red;" />
@@ -85,22 +93,34 @@
                 
                 <div class="form-row">
                     <h:outputLabel for="email" value="Enter Email :" />
-                    <h:inputText id="email" value="#{addUserUI.email}" class="input input-bordered input-primary w-full max-w-xs"/>
+                    <h:inputText id="email" value="#{addUserUI.email}" class="input input-bordered input-primary w-full max-w-xs" validatorMessage="Email is required">
+		    	<f:validateRequired />
+		    </h:inputText>
+		    <h:message for="email" style="color: red;" />
                 </div>
                 
                 <div class="form-row">
                     <h:outputLabel for="contactNumber" value="Enter Contact Number :" />
-                    <h:inputText id="contactNumber" value="#{addUserUI.contactNumber}" class="input input-bordered input-primary w-full max-w-xs"/>
+                    <h:inputText id="contactNumber" value="#{addUserUI.contactNumber}" class="input input-bordered input-primary w-full max-w-xs" validatorMessage="Contact Number is required"><f:validateRequired />
+		    </h:inputText>
+		    <h:message for="contactNumber" style="color: red;" />
+
                 </div>
                 
                 <div class="form-row">
                     <h:outputLabel for="username" value="Enter Username :" />
-                    <h:inputText id="username" value="#{addUserUI.username}" class="input input-bordered input-primary w-full max-w-xs"/>
+                    <h:inputText id="username" value="#{addUserUI.username}" class="input input-bordered input-primary w-full max-w-xs" validatorMessage="Username is required"><f:validateRequired />
+		    </h:inputText>
+		    <h:message for="username" style="color: red;" />
+
                 </div>
                 
                 <div class="form-row">
                     <h:outputLabel for="password" value="Enter Password :" />
-                    <h:inputSecret id="password" value="#{addUserUI.password}" class="input input-bordered input-primary w-full max-w-xs"/>
+                    <h:inputSecret id="password" value="#{addUserUI.password}" class="input input-bordered input-primary w-full max-w-xs" validatorMessage="Password is required"><f:validateRequired />
+		    </h:inputSecret>
+		    <h:message for="password" style="color: red;" />
+
                 </div>
                 
                 <div class="form-row">
